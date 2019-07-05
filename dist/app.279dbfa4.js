@@ -142,9 +142,270 @@ function () {
       return createdElement;
     }
   }, {
+    key: "newGridButton",
+    value: function newGridButton() {
+      var _this = this;
+
+      var newGridButton = this.createElement('button');
+      newGridButton.classList.add('new-grid-button');
+      newGridButton.textContent = 'Create Grid';
+      newGridButton.addEventListener('click', function () {
+        var mainContainer = document.querySelector('.container');
+        mainContainer.appendChild(_this.createGrid());
+      });
+      return newGridButton;
+    }
+  }, {
+    key: "createGrid",
+    value: function createGrid() {
+      var _this2 = this;
+
+      var outerDiv = this.createElement('div');
+      var buttonContainer = this.createElement('div');
+      var cancelButton = this.createElement('button');
+      var addRowButton = this.createElement('button');
+      var addColumnButton = this.createElement('button');
+      var newInnerDivButton = this.createElement('button');
+      var resetDivAreas = this.createElement('button');
+      outerDiv.classList.add('new');
+      outerDiv.setAttribute('style', 'display: grid; grid-template: repeat(1, 1fr) / repeat(1, 1fr);');
+      cancelButton.setAttribute('type', 'button');
+      addRowButton.setAttribute('type', 'button');
+      addColumnButton.setAttribute('type', 'button');
+      newInnerDivButton.setAttribute('type', 'button');
+      resetDivAreas.setAttribute('type', 'button');
+      cancelButton.textContent = 'Cancel';
+      addRowButton.textContent = 'Add Row';
+      addColumnButton.textContent = 'Add Column';
+      newInnerDivButton.textContent = 'New Panel';
+      resetDivAreas.textContent = 'Reset Panel Layout';
+      cancelButton.addEventListener('click', function () {
+        var mainContainer = document.querySelector('.container');
+        mainContainer.removeChild(mainContainer.lastChild);
+      });
+      addRowButton.addEventListener('click', function () {
+        //getNum* only works with outerDiv, consider refactoring
+        var numRows = _this2.getNumRows(outerDiv);
+
+        var numColumns = _this2.getNumColumns(outerDiv); // console.log(numRows)
+
+
+        outerDiv.setAttribute('style', "display: grid; grid-template: repeat(".concat(numRows + 1, ", 1fr) / repeat(").concat(numColumns, ", 1fr);"));
+      });
+      addColumnButton.addEventListener('click', function () {
+        //getNum* only works with outerDiv, consider refactoring
+        var numRows = _this2.getNumRows(outerDiv);
+
+        var numColumns = _this2.getNumColumns(outerDiv); // console.log(numRows)
+
+
+        outerDiv.setAttribute('style', "display: grid; grid-template: repeat(".concat(numRows, ", 1fr) / repeat(").concat(numColumns + 1, ", 1fr);"));
+      });
+      newInnerDivButton.addEventListener('click', function () {
+        var newInnerDiv = _this2.createElement('div');
+
+        var moveContainer = _this2.createElement('div');
+
+        var contentForm = _this2.createElement('form');
+
+        var headerInput = _this2.createElement('input');
+
+        var bodyInput = _this2.createElement('input');
+
+        var submitPanel = _this2.createElement('button');
+
+        var displayMove = _this2.createElement('button');
+
+        var moveUp = _this2.createElement('button');
+
+        var moveDown = _this2.createElement('button');
+
+        var moveLeft = _this2.createElement('button');
+
+        var moveRight = _this2.createElement('button');
+
+        var growUp = _this2.createElement('button');
+
+        var growDown = _this2.createElement('button');
+
+        var growLeft = _this2.createElement('button');
+
+        var growRight = _this2.createElement('button');
+
+        headerInput.setAttribute('type', 'text');
+        bodyInput.setAttribute('type', 'text');
+        submitPanel.setAttribute('type', 'button');
+        displayMove.setAttribute('type', 'button');
+        displayMove.textContent = 'Move Options';
+        moveUp.setAttribute('type', 'button');
+        moveDown.setAttribute('type', 'button');
+        moveLeft.setAttribute('type', 'button');
+        moveRight.setAttribute('type', 'button');
+        growUp.setAttribute('type', 'button');
+        growDown.setAttribute('type', 'button');
+        growLeft.setAttribute('type', 'button');
+        growRight.setAttribute('type', 'button');
+        moveUp.textContent = 'Move Up';
+        moveDown.textContent = 'Move Down';
+        moveLeft.textContent = 'Move Left';
+        moveRight.textContent = 'Move Right';
+        growUp.textContent = 'Grow Up';
+        growDown.textContent = 'Grow Down';
+        growLeft.textContent = 'Grow Left';
+        growRight.textContent = 'Grow Right';
+        moveUp.classList.add('up-button');
+        growUp.classList.add('up-button');
+        moveDown.classList.add('down-button');
+        growDown.classList.add('down-button');
+        moveLeft.classList.add('left-button');
+        growLeft.classList.add('left-button');
+        moveRight.classList.add('right-button');
+        growRight.classList.add('right-button');
+        moveContainer.classList.toggle('hidden');
+        submitPanel.textContent = 'Submit';
+        displayMove.textContent = 'Move Panel';
+        submitPanel.addEventListener('click', function () {
+          var panelHeader = _this2.createElement('h3');
+
+          var panelBody = _this2.createElement('p');
+
+          panelHeader.textContent = headerInput.value;
+          panelBody.textContent = bodyInput.value;
+          contentForm.classList.toggle('hidden');
+          newInnerDiv.appendChild(panelHeader);
+          newInnerDiv.appendChild(panelBody);
+        });
+        displayMove.addEventListener('click', function () {
+          moveContainer.classList.toggle('hidden');
+        });
+        moveUp.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart - 1, "/").concat(columnStart, "/").concat(rowEnd - 1, "/").concat(columnEnd, ";"));
+        });
+        moveDown.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart + 1, "/").concat(columnStart, "/").concat(rowEnd + 1, "/").concat(columnEnd, ";"));
+        });
+        moveLeft.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart - 1, "/").concat(rowEnd, "/").concat(columnEnd - 1, ";"));
+        });
+        moveRight.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart + 1, "/").concat(rowEnd, "/").concat(columnEnd + 1, ";"));
+        });
+        growUp.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart - 1, "/").concat(columnStart, "/").concat(rowEnd, "/").concat(columnEnd, ";"));
+        });
+        growDown.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart, "/").concat(rowEnd + 1, "/").concat(columnEnd, ";"));
+        });
+        growLeft.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart - 1, "/").concat(rowEnd, "/").concat(columnEnd, ";"));
+        });
+        growRight.addEventListener('click', function () {
+          var rowStart = _this2.getRowStart(newInnerDiv);
+
+          var columnStart = _this2.getColumnStart(newInnerDiv);
+
+          var rowEnd = _this2.getRowEnd(newInnerDiv);
+
+          var columnEnd = _this2.getColumnEnd(newInnerDiv);
+
+          newInnerDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart, "/").concat(rowEnd, "/").concat(columnEnd + 1, ";"));
+        });
+        moveContainer.appendChild(moveUp);
+        moveContainer.appendChild(moveDown);
+        moveContainer.appendChild(moveLeft);
+        moveContainer.appendChild(moveRight);
+        moveContainer.appendChild(growUp);
+        moveContainer.appendChild(growDown);
+        moveContainer.appendChild(growLeft);
+        moveContainer.appendChild(growRight);
+        contentForm.appendChild(headerInput);
+        contentForm.appendChild(bodyInput);
+        contentForm.appendChild(submitPanel);
+        newInnerDiv.appendChild(contentForm);
+        newInnerDiv.appendChild(displayMove);
+        newInnerDiv.appendChild(moveContainer); // newInnerDiv.setAttribute('style', 'grid-area: 1/1/1/1;')
+
+        outerDiv.appendChild(newInnerDiv);
+      });
+      resetDivAreas.addEventListener('click', function () {
+        var childDivs = outerDiv.childNodes;
+
+        var numColumns = _this2.getNumColumns(outerDiv);
+
+        childDivs.forEach(function (childDiv, index) {
+          var rowStart = Math.floor(index / numColumns) + 1;
+          var columnStart = index - (rowStart - 1) * numColumns + 1;
+          childDiv.setAttribute('style', "grid-area: ".concat(rowStart, "/").concat(columnStart, "/").concat(rowStart + 1, "/").concat(columnStart + 1, ";"));
+        });
+      });
+      buttonContainer.appendChild(cancelButton);
+      buttonContainer.appendChild(addRowButton);
+      buttonContainer.appendChild(addColumnButton);
+      buttonContainer.appendChild(newInnerDivButton);
+      buttonContainer.appendChild(resetDivAreas);
+      outerDiv.appendChild(buttonContainer);
+      return outerDiv;
+    }
+  }, {
     key: "createNavBar",
     value: function createNavBar() {
-      var _this = this;
+      var _this3 = this;
 
       var navElement = this.createElement('nav');
       var ulElement = this.createElement('ul');
@@ -157,7 +418,7 @@ function () {
         btnElement.textContent = section.charAt(0).toUpperCase() + section.slice(1); // aElement.setAttribute('href', `#${section}`)
 
         btnElement.addEventListener('click', function () {
-          _this.toggleHidden(section);
+          _this3.toggleHidden(section);
         });
         liElement.classList.add('nav_list-item');
         liElement.appendChild(btnElement); // ulElement.appendChild(liElement)
@@ -188,6 +449,51 @@ function () {
       pageSection.classList.toggle('hidden');
       return pageSection;
     }
+  }, {
+    key: "getNumRows",
+    value: function getNumRows(element) {
+      var styleStr = element.getAttribute('style');
+      return parseInt(styleStr.slice(styleStr.indexOf(': repeat(') + 9, styleStr.indexOf(', 1fr) /')));
+    }
+  }, {
+    key: "getNumColumns",
+    value: function getNumColumns(element) {
+      var styleStr = element.getAttribute('style');
+      return parseInt(styleStr.slice(styleStr.indexOf('/ repeat(') + 9, styleStr.indexOf(', 1fr);')));
+    }
+  }, {
+    key: "getRowStart",
+    value: function getRowStart(element) {
+      var styleStr = element.getAttribute('style');
+      return parseInt(styleStr.slice(styleStr.indexOf(': ') + 2, styleStr.indexOf('/')));
+    }
+  }, {
+    key: "getColumnStart",
+    value: function getColumnStart(element) {
+      var styleStr = element.getAttribute('style');
+      var styleSubStr = styleStr.slice(styleStr.indexOf('/') + 1, styleStr.length);
+      styleSubStr = styleSubStr.slice(0, styleSubStr.indexOf('/'));
+      return parseInt(styleSubStr);
+    }
+  }, {
+    key: "getRowEnd",
+    value: function getRowEnd(element) {
+      var styleStr = element.getAttribute('style');
+      var styleSubStr = styleStr.slice(styleStr.indexOf('/') + 1, styleStr.length);
+      styleSubStr = styleSubStr.slice(styleSubStr.indexOf('/') + 1, styleSubStr.length);
+      styleSubStr = styleSubStr.slice(0, styleSubStr.indexOf('/'));
+      return parseInt(styleSubStr);
+    }
+  }, {
+    key: "getColumnEnd",
+    value: function getColumnEnd(element) {
+      var styleStr = element.getAttribute('style');
+      var styleSubStr = styleStr.slice(styleStr.indexOf('/') + 1, styleStr.length);
+      styleSubStr = styleSubStr.slice(styleSubStr.indexOf('/') + 1, styleSubStr.length);
+      styleSubStr = styleSubStr.slice(styleSubStr.indexOf('/') + 1, styleSubStr.length);
+      styleSubStr = styleSubStr.slice(0, styleSubStr.length - 1);
+      return parseInt(styleSubStr);
+    }
   }]);
 
   return Components;
@@ -200,6 +506,8 @@ var Components = require('./utils/Components');
 var components = new Components();
 var fixedHeader = document.querySelector('.fixed-header');
 fixedHeader.appendChild(components.createNavBar());
+var mainContainer = document.querySelector('.container');
+mainContainer.appendChild(components.newGridButton());
 },{"./utils/Components":"public/js/utils/Components.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -228,7 +536,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57525" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62421" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
