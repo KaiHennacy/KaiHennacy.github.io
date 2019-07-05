@@ -1,0 +1,358 @@
+:root{
+    --red: #724e4e;
+	--blue: #7686a7   ;
+	--green: #bad892  ;
+    --orange: #ffcb82;
+    --yellow: #d4b975;
+    --lite-orange: #ffe4ae;
+	--pink: #d7a3a2;
+    --white: #f7edd6;
+    --black: #433b38; 
+    --grey: #a3918d;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border-style: collapse;
+    
+}
+
+.hidden {
+    display: none;
+}
+
+html{
+    font: 24px/1;
+    font-family: 'Open Sans', sans-serif;
+}
+
+button {
+    font-size: 100%;
+    font-family: inherit;
+    border: 0;
+    padding: 0;
+    background: none;
+}
+
+.container{
+    padding-top: 100px;
+    background-color: var(--lite-orange);
+    width: auto;
+}
+
+a{
+    text-decoration: none;
+}
+
+img{
+    max-width: 60vw;
+}
+
+p{
+    font-size: 1rem;
+}
+
+ul{
+    list-style-type: none;
+}
+
+ul li{
+    font-size: 1rem;
+}
+
+.page-logo{
+    height: 1.5rem;
+}
+
+.fixed-header{
+    align-items: center;
+    background-color: var(--yellow);
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 3rem;
+    position: fixed;
+    top: 5px;
+    width: 100vw;
+}
+
+.fixed-header_title{
+    font-size: 1rem;
+}
+
+.nav_list-item{
+    color: var(--black);
+    font-size: 0.7rem;
+    border-style: solid;
+    border-width: 3px;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin: 0px 5px 0px 0px;
+    background-color: grey;
+}
+
+.nav_list-item a{
+    color: var(--black);
+}
+
+.about{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 40px;
+    background-color: var(--orange);
+}
+
+.about-me header{
+    background-color: var(--white);
+    color: var(--red);
+    padding: 5px;
+}
+
+.about-me ul{
+    list-style-type: square;
+    padding: 25px;
+}
+
+
+
+.about-me_header{
+    grid-area: header;
+}
+.about-me_bio { 
+    grid-area: bio; 
+    padding: 5px;
+}
+.about-me_avatar { 
+    grid-area: avatar; 
+}
+.about-me_contact { 
+    grid-area: contact; 
+    padding: 5px;
+}
+.about-me_skills { 
+    grid-area: skills; 
+    padding: 5px;
+}
+
+.about-me_sections{
+    display: grid;
+    grid-template-areas:
+    'header'
+    'bio'
+    'bio'
+    'avatar'
+    'avatar'
+    'skills'
+    'skills'
+    'contact';
+    grid-gap: 10px;
+}
+
+.about-me_sections > div{
+    background-color: var(--lite-orange);
+}
+
+.about-me_avatar{
+    height: auto;
+}
+
+.projects{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 40px;
+    background-color: var(--orange);
+}
+
+.projects h3, h4{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+.projects p{
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+.projects_sections img{
+    margin-bottom: 10px;
+    max-width: 60vw;
+}
+
+
+.projects header{
+    background-color: var(--white);
+    font-size: 1.5rem;
+    padding: 5px;
+    color: var(--red);
+}
+
+.projects_header{
+    grid-area: header;
+}
+.projects_hospital{
+    grid-area: hospital;
+    padding: 5px;
+}
+
+.projects_virtual-pet{
+    grid-area: virtual-pet;
+    padding: 5px;
+}
+
+.projects_portfolio{
+    grid-area: portfolio;
+    padding: 5px;
+}
+
+.projects_sections{
+   
+    display: grid;
+    grid-template-areas:
+    'header'
+    'hospital'
+    'virtual-pet'
+    'portfolio';
+    grid-gap: 10px;
+}
+
+.projects_sections > div{
+    background-color: var(--lite-orange);
+}
+
+footer{
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--black);
+    height: 1.62rem;
+    width: 100%;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    align-items: center;
+}
+
+footer small{
+    color: var(--white);
+}
+
+footer a{
+    color: var(--white);
+}
+
+@media (min-width: 480px){
+    .fixed-header_title{
+        font-size: 1.79rem;
+    }
+    .page-logo{
+        height: 3rem;
+    }
+    .nav_list-item{
+        font-size: 1.1rem;
+    }
+    .about-me header{
+        font-size: 2.0rem;
+    }
+    .projects header{
+        font-size: 2.0rem;
+    }
+    ul li{
+        font-size: 1.1rem;
+    }
+}
+@media (min-width: 400px){
+    .about-me p{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 620px) {
+    .about-me_sections{
+        display: grid;
+        grid-template-areas:
+        'header header header'
+        'header header header'
+        'bio bio avatar'
+        'skills skills contact';
+        grid-gap: 10px;
+    }
+    .projects_sections{
+        display: grid;
+        grid-template-areas:
+        'header header header'
+        'hospital virtual-pet portfolio';
+        grid-gap: 10px;
+    }
+    img{
+        max-width: 40vw;
+    }
+    .projects_sections img{
+        max-width: 20vw;
+    }
+    .about-me p{
+        font-size: 1rem;
+    }
+    .about-me h3{
+        font-size: 1.5rem;
+    }
+    .projects p{
+        font-size: 1rem;
+    }
+    .projects h3{
+        font-size: 1.5rem;
+    }
+    .projects h4{
+        font-size: 1.4rem;
+    }
+    ul li{
+        font-size: 1rem;
+    }
+}
+@media (min-width: 670px){
+    .fixed-header{
+        flex-direction: row;
+    }
+    .nav_list-item{
+        display: inline;
+    }
+}
+@media (min-width: 880px){
+    .about-me p{
+        font-size: 1.5rem;
+    }
+    .about-me h3{
+        font-size: 2rem;
+    }
+    .projects p{
+        font-size: 1.5rem;
+    }
+    .projects h3{
+        font-size: 2rem;
+    }
+    .projects h4{
+        font-size: 1.7rem;
+    }
+    ul li{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 1200px){
+    .about-me p{
+        font-size: 2rem;
+    } 
+    .about-me h3{
+        font-size: 2.5rem;
+    }
+    .projects p{
+        font-size: 2rem;
+    }
+    .projects h3{
+        font-size: 2.5rem;
+    }
+    .projects h4{
+        font-size: 1.7rem;
+    }
+    ul li{
+        font-size: 2rem;
+    }
+}
+
