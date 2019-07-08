@@ -14,7 +14,7 @@ test('should create div element', () => {
     expect(themes.createElement('div') instanceof HTMLDivElement).toBeTruthy()
 })
 
-test.('throws error if no parameter given', () =>{
+test('throws error if no parameter given', () =>{
     expect(() =>{
         themes.createElement()
     }).toThrow('Must pass valid HTML Element')
