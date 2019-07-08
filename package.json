@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "hest --colors --coverage",
-    "start": "parcel index.html"
+    "test": "jest --colors --coverage",
+    "start": "parcel index.html",
+    "predeploy": "rm -rf dist && parcel build index.html",
+    "deploy": "gh-pages -d dist"
   },
   "repository": {
     "type": "git",

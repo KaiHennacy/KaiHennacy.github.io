@@ -265,6 +265,7 @@ class Components {
         buttonContainer.appendChild(addColumnButton)
         buttonContainer.appendChild(newInnerDivButton)
         buttonContainer.appendChild(resetDivAreas)
+        buttonContainer.appendChild(instructions)
         
 
         outerDiv.appendChild(buttonContainer)
