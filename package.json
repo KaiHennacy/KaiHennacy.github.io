@@ -1,0 +1,25 @@
+{
+  "name": "KaiHennacy.github.io",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "hest --colors --coverage",
+    "start": "parcel index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KaiHennacy/KaiHennacy.github.io.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/KaiHennacy/KaiHennacy.github.io/issues"
+  },
+  "homepage": "https://github.com/KaiHennacy/KaiHennacy.github.io#readme",
+  "dependencies": {
+    "bundle": "^2.1.0",
+    "parcel": "^1.12.3"
+  }
+}

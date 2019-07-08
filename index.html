@@ -6,25 +6,54 @@
         <title>Kai Hennacy</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-        <link href=".\public\styles.css" rel="stylesheet">
+
+        <link class="color" id="pagestyle" href="public/css/colors/bubblegum.css" rel="stylesheet" type="text/css" />
+        <link class="color" id="pagestyle" href="public/css/colors/blue.css" rel="stylesheet" type="text/css" />
+        <link class="color" id="pagestyle" href="public/css/colors/dark.css" rel="stylesheet" type="text/css" />
+        <link class="color" id="pagestyle" href="public/css/colors/classic.css" rel="stylesheet" type="text/css" />
+        
+        <div class="color-insert"></div>
+
+        <link id="pagestyle" href="public/css/base.css" rel="stylesheet" type="text/css" />
+        <link id="pagestyle" href="public/css/header.css" rel="stylesheet" type="text/css" />
+        <link id="pagestyle" href="public/css/footer.css" rel="stylesheet" type="text/css" /> 
+        <link id="pagestyle" href="public/css/articles.css" rel="stylesheet" type="text/css" />
+        <link id="pagestyle" href="public/css/media.css" rel="stylesheet" type="text/css" />
+        
     </head>
     <body>
-        <header class="fixed-header">
+    <div class="wrapper">
+        <header class="fixed-header" name="home">
             <img class="page-logo" src="images/Portfolio Logo.png" alt="logo">
             <h1 class="fixed-header_title">Kai Hennacy</h1>
-            <nav class="nav">
-                <ul class="nav_list">
-                    <li class="nav_list-item"><a href="#top">Back To Top</a></li>
-                    <li class="nav_list-item"><a href="#about-me">About Me</a></li>
-                    <li class="nav_list-item"><a href="#projects">Projects</a></li>
-                </ul>
-            </nav>
         </header>
         <main>
-        <a name="top"></a>
             <div class="container">
-                <article class="about-me">
-                <a name="about-me"></a>
+                <article class="home">
+                    <div class="grid-outer">
+                        <div class="grid-inner welcome">
+                            <h1>Welcome!</h1>
+                            <h3>This is a showcase of the web development skills I've learned</h3>
+                        </div>
+                        <div class="grid-inner about-tab">
+                            <h3>About</h3>
+                            <p>Brief biography, skills, and contact</p>
+                        </div>
+                        <div class="grid-inner projects-tab">
+                            <h3>Projects</h3>
+                            <p>Some of the work I've done</p>
+                        </div>
+                        <div class="grid-inner theme-tab">
+                            <h3>Themes</h3>
+                            <p>Click a button, change the way things look</p>
+                        </div>
+                        <div class="grid-inner gridmaker-tab">
+                            <h3>Gridmaker</h3>
+                            <p>Need a quick and easy way to make a grid template? I've got just what you need</p>
+                        </div>
+                    </div>
+                </article>
+                <article class="about hidden">
                     <div class="about-me_sections">
                         <div class="about-me_header">
                             <header>
@@ -49,7 +78,7 @@
                             <section>
                                 <h3>How to Contact Me</h3>
                                 <p>Email me: <a href="mailto:kchennacy@gmail.com" target="_blank">kchennacy@gmail.com</a></p>
-                                <p>Call me: <a href="https://www.youtube.com/watch?v=StKVS0eI85I" target="_blank">(614) 446-9292</a></p>
+                                <p>Call me: <a href="https://www.youtube.com/watch?v=StKVS0eI85I" target="_blank">(614) 259-8192‬</a></p>
                                 <p>Follow me on <a href="https://www.linkedin.com/in/kai-hennacy/" target="_blank">LinkedIn</a> or <a href="https://github.com/KaiHennacy" target="_blank">GitHub</a></p>
                             </section>
                         </div>
@@ -71,7 +100,7 @@
                         </div>
                     </div>
                 </article>
-                <article class="projects">
+                <article class="projects hidden">
                 <a name="projects"></a>
                     <div class="projects_sections">
                         <div class="projects_header">
@@ -138,7 +167,52 @@
                                 </ul>         
                             </section>
                         </div>
+                        <div class="projects_review-site">
+                                <section>
+                                <h3>Blighted Potatoes</h3>
+                                <p>Find it <a href="https://github.com/charles-m-doan/reviews-site" target="_blank">here, in this GitHub repository</a></p>
+                                <img src="images/reviews-site.PNG"></img>
+                                <h4>Rescources Used:</h4>
+                                <ul class="resource_list">
+                                    <li class="resource_list-item">HTML</li>
+                                    <li class="resource_list-item">CSS</li>
+                                    <li class="resource_list-item">Flexbox</li>
+                                    <li class="resource_list-item">Grid</li>
+                                    <li class="resource_list-item">Responsive Design</li>
+                                    <li class="resource_list-item">Visual Studio Code</li>
+                                    <li class="resource_list-item">Eclipse</li>
+                                    <li class="resource_list-item">Springboot</li>
+                                    <li class="resource_list-item">Thymeleaf</li>
+                                    <li class="resource_list-item">GitHub</li>
+                                </ul>         
+                            </section>
+                        </div>
+                        <div class="projects_review-site">
+                            <section>
+                                <h3>Blighted Potatoes</h3>
+                                <p>Find it <a href="https://github.com/KaiHennacy/blog-platform" target="_blank">here, in this GitHub repository</a></p>
+                                <img src="images/blog-platform.PNG"></img>
+                                <h4>Rescources Used:</h4>
+                                <ul class="resource_list">
+                                    <li class="resource_list-item">HTML</li>
+                                    <li class="resource_list-item">CSS</li>
+                                    <li class="resource_list-item">Flexbox</li>
+                                    <li class="resource_list-item">Grid</li>
+                                    <li class="resource_list-item">Responsive Design</li>
+                                    <li class="resource_list-item">Visual Studio Code</li>
+                                    <li class="resource_list-item">Eclipse</li>
+                                    <li class="resource_list-item">Springboot</li>
+                                    <li class="resource_list-item">Thymeleaf</li>
+                                    <li class="resource_list-item">GitHub</li>                                    
+                                </ul>         
+                            </section>
+                        </div>
                     </div>
+                </article>
+                <article class="themes hidden">
+                </article>
+                <article class="gridmaker hidden">
+                    
                 </article>
             </div>
         </main>
@@ -149,5 +223,7 @@
                 <a href="https://github.com/KaiHennacy" class="fa fa-github"></a>
             </div>
         </footer>
+    </div>       
+    <script type="text/javascript" src="public/js/app.js"></script>
     </body>
 </html>

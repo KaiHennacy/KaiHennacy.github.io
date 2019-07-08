@@ -1,0 +1,23 @@
+:root{
+    /* theme buttons */
+    --classic: #ffcb82;
+    --dark: #312717;
+    --bubblegum: deeppink;
+
+    --red: #724e4e;
+	--blue: #686ebb;
+	--green: #bad892;
+    --orange: #ffcb82;
+    --yellow: #d4b975;
+    --lite-orange: #ffe4ae;
+	--pink: #d7a3a2;
+    --white: #f7edd6;
+    --black: #433b38; 
+    --grey: #a3918d;
+    --darker: #0000002a;
+    --darkerer: #00000070;
+
+    color: #000000;
+}
+
+/*# sourceMappingURL=/classic.1070ed22.css.map */

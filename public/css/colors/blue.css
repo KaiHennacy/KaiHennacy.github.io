@@ -1,0 +1,22 @@
+:root {
+    /* theme buttons */
+    --classic: #ffcb82;
+    --dark: #312717;
+    --bubblegum: deeppink;
+    
+    
+    --red: #4d3333;
+    --blue: #282a47;
+    --green: #60704b;
+    --orange: #ea4c34;
+    --yellow: darkslategrey;
+    --lite-orange: #e5eced;
+    --pink: floralwhite;
+    --white: #9e9e9e;
+    --black: #1b1817;
+    --grey: #5e5e57;
+    --darker: #0000002a;
+    --darkerer: #00000070;
+
+    color: #0d082a;
+}

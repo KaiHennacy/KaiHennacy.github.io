@@ -1,0 +1,141 @@
+
+.new-grid-button{
+    margin: 30px;
+}
+
+img{
+    max-width: 60vw;
+}
+
+
+.about{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 40px;
+    background-color: var(--orange);
+}
+
+.about-me header{
+    background-color: var(--white);
+    color: var(--red);
+    padding: 5px;
+}
+
+.about-me ul{
+    list-style-type: square;
+    padding: 25px;
+}
+
+
+
+.about-me_header{
+    grid-area: header;
+}
+.about-me_bio { 
+    grid-area: bio; 
+    padding: 5px;
+}
+.about-me_avatar { 
+    grid-area: avatar; 
+}
+.about-me_contact { 
+    grid-area: contact; 
+    padding: 5px;
+}
+.about-me_skills { 
+    grid-area: skills; 
+    padding: 5px;
+}
+
+.about-me_sections{
+    display: grid;
+    grid-template-areas:
+    'header'
+    'bio'
+    'bio'
+    'avatar'
+    'avatar'
+    'skills'
+    'skills'
+    'contact';
+    grid-gap: 10px;
+}
+
+.about-me_sections > div{
+    background-color: var(--lite-orange);
+}
+
+.about-me_avatar{
+    height: auto;
+}
+
+.projects{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    padding: 40px;
+    background-color: var(--orange);
+}
+
+.projects h3, h4{
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+.projects p{
+    margin-bottom: 10px;
+    font-size: 1.25rem;
+}
+.projects_sections img{
+    margin-bottom: 10px;
+    max-width: 60vw;
+}
+
+
+.projects header{
+    background-color: var(--white);
+    font-size: 1.5rem;
+    padding: 5px;
+    color: var(--red);
+}
+
+.projects_header{
+    grid-area: header;
+}
+.projects_hospital{
+    grid-area: hospital;
+    padding: 5px;
+}
+
+.projects_virtual-pet{
+    grid-area: virtual-pet;
+    padding: 5px;
+}
+
+.projects_portfolio{
+    grid-area: portfolio;
+    padding: 5px;
+}
+
+.projects_sections{
+   
+    display: grid;
+    grid-template-areas:
+    'header'
+    'hospital'
+    'virtual-pet'
+    'portfolio';
+    grid-gap: 10px;
+}
+
+.projects_sections > div{
+    background-color: var(--lite-orange);
+}
+
+
+
+
+
+
+
+/*# sourceMappingURL=/style1.13dd7f5f.css.map */
