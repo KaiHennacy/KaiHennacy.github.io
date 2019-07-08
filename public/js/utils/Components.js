@@ -26,14 +26,21 @@ class Components {
     createGrid(){
         const outerDiv = this.createElement('div')
         const buttonContainer = this.createElement('div')
+        const instructions = this.createElement('p')
         const cancelButton = this.createElement('button')
         const addRowButton = this.createElement('button')
         const addColumnButton = this.createElement('button')
         const newInnerDivButton = this.createElement('button')
         const resetDivAreas = this .createElement('button')
+        
 
         outerDiv.classList.add('new')
+        outerDiv.classList.add('grid-outer')
         outerDiv.setAttribute('style', 'display: grid; grid-template: repeat(1, 1fr) / repeat(1, 1fr);')
+
+        buttonContainer.classList.add('grid-inner')
+
+        instructions.textContent = 'You must reset the panel layout before using move'
 
         cancelButton.setAttribute('type', 'button')
         addRowButton.setAttribute('type', 'button')
@@ -48,8 +55,8 @@ class Components {
         resetDivAreas.textContent = 'Reset Panel Layout'
 
         cancelButton.addEventListener('click', () => {
-            const mainContainer = document.querySelector('.container')
-            mainContainer.removeChild(mainContainer.lastChild)
+            const gridMaker = document.querySelector('.gridmaker')
+            gridMaker.removeChild(gridMaker.lastChild)
         })
 
         addRowButton.addEventListener('click', () => {
@@ -76,6 +83,8 @@ class Components {
             const bodyInput = this.createElement('input')
             const submitPanel = this.createElement('button')
             const displayMove = this.createElement('button')
+
+            newInnerDiv.classList.add('grid-inner')
 
             const moveUp = this.createElement('button')
             const moveDown = this.createElement('button')

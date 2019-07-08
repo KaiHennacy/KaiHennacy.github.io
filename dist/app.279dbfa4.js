@@ -163,13 +163,17 @@ function () {
 
       var outerDiv = this.createElement('div');
       var buttonContainer = this.createElement('div');
+      var instructions = this.createElement('p');
       var cancelButton = this.createElement('button');
       var addRowButton = this.createElement('button');
       var addColumnButton = this.createElement('button');
       var newInnerDivButton = this.createElement('button');
       var resetDivAreas = this.createElement('button');
       outerDiv.classList.add('new');
+      outerDiv.classList.add('grid-outer');
       outerDiv.setAttribute('style', 'display: grid; grid-template: repeat(1, 1fr) / repeat(1, 1fr);');
+      buttonContainer.classList.add('grid-inner');
+      instructions.textContent = 'You must reset the panel layout before using move';
       cancelButton.setAttribute('type', 'button');
       addRowButton.setAttribute('type', 'button');
       addColumnButton.setAttribute('type', 'button');
@@ -181,8 +185,8 @@ function () {
       newInnerDivButton.textContent = 'New Panel';
       resetDivAreas.textContent = 'Reset Panel Layout';
       cancelButton.addEventListener('click', function () {
-        var mainContainer = document.querySelector('.container');
-        mainContainer.removeChild(mainContainer.lastChild);
+        var gridMaker = document.querySelector('.gridmaker');
+        gridMaker.removeChild(gridMaker.lastChild);
       });
       addRowButton.addEventListener('click', function () {
         //getNum* only works with outerDiv, consider refactoring
@@ -216,6 +220,8 @@ function () {
         var submitPanel = _this2.createElement('button');
 
         var displayMove = _this2.createElement('button');
+
+        newInnerDiv.classList.add('grid-inner');
 
         var moveUp = _this2.createElement('button');
 
@@ -692,7 +698,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60755" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53823" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

@@ -68,12 +68,34 @@ ul li{
 .container article{
     position: relative;
     width: 90vw;
+    background-color: var(--orange)
 }
+
+
 
 .grid-outer{
     display: grid;
     grid-gap: 10px;
     padding: 10px;
+}
+
+.grid-inner{
+    background-color: var(--lite-orange)
+}
+
+.grid-inner button{
+    padding: 2px;
+    margin: 1px;
+    border: solid;
+    border-width: 1px;
+}
+
+article button{
+    background-color: var(--darker);
+}
+
+article button:hover{
+    background-color: var(--darkerer);
 }
 
 .grid-outer > div{
