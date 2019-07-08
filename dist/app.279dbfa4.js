@@ -133,6 +133,7 @@ function () {
 
   _createClass(Components, [{
     key: "createElement",
+    //Rather than use default createElement, this catch erronious creation of elements
     value: function createElement(elementType) {
       if (!elementType) {
         throw new Error('Must pass valid HTML Element');
@@ -150,7 +151,7 @@ function () {
       newGridButton.classList.add('new-grid-button');
       newGridButton.textContent = 'Create Grid';
       newGridButton.addEventListener('click', function () {
-        var mainContainer = document.querySelector('.container');
+        var mainContainer = document.querySelector('.gridmaker');
         mainContainer.appendChild(_this.createGrid());
       });
       return newGridButton;
@@ -377,10 +378,9 @@ function () {
         contentForm.appendChild(headerInput);
         contentForm.appendChild(bodyInput);
         contentForm.appendChild(submitPanel);
-        newInnerDiv.appendChild(contentForm);
         newInnerDiv.appendChild(displayMove);
-        newInnerDiv.appendChild(moveContainer); // newInnerDiv.setAttribute('style', 'grid-area: 1/1/1/1;')
-
+        newInnerDiv.appendChild(moveContainer);
+        newInnerDiv.appendChild(contentForm);
         outerDiv.appendChild(newInnerDiv);
       });
       resetDivAreas.addEventListener('click', function () {
@@ -409,16 +409,22 @@ function () {
 
       var navElement = this.createElement('nav');
       var ulElement = this.createElement('ul');
-      var buttonElement = this.createElement('button');
-      var liElements;
-      var sections = ['home', 'about', 'projects', 'theme'];
-      liElements = sections.map(function (section) {
+      var menuButton = this.createElement('button');
+      var liElements; // const homeButton = this.createElement('li')
+      // homeButton.classList.add('nav_list-item')
+      // homeButton.addEventListener('click', () => {
+      // })
+
+      var articles = ['home', 'about', 'projects', 'themes', 'gridmaker']; // I would use const sections = ['foo', 'bar', '...', '...'], but I want to give each tab its own functionality"
+
+      navElement.classList.add('nav');
+      liElements = articles.map(function (article) {
         var liElement = document.createElement('li');
         var btnElement = document.createElement('button');
-        btnElement.textContent = section.charAt(0).toUpperCase() + section.slice(1); // aElement.setAttribute('href', `#${section}`)
+        btnElement.textContent = article.charAt(0).toUpperCase() + article.slice(1); // aElement.setAttribute('href', `#${section}`)
 
         btnElement.addEventListener('click', function () {
-          _this3.toggleHidden(section);
+          _this3.toggleHidden(article);
         });
         liElement.classList.add('nav_list-item');
         liElement.appendChild(btnElement); // ulElement.appendChild(liElement)
@@ -432,22 +438,45 @@ function () {
         ulElement.appendChild(element);
       }); //ulElement.innerHTML = liElements.join('')
 
-      buttonElement.classList.add('navigation__button');
-      buttonElement.textContent = 'MENU';
-      buttonElement.addEventListener('click', function () {
+      menuButton.classList.add('nav_button');
+      menuButton.textContent = 'MENU';
+      menuButton.addEventListener('click', function () {
+        menuButton.textContent = 'MENU';
         ulElement.classList.toggle('hidden');
+
+        if (!ulElement.classList.contains('hidden')) {
+          menuButton.textContent = 'MENU ^';
+        }
       });
-      navElement.appendChild(buttonElement);
+      window.addEventListener('click', function (event) {
+        console.log(event);
+
+        if (!event.target.matches('button') && !ulElement.classList.contains('hidden')) {
+          ulElement.classList.toggle('hidden');
+          menuButton.textContent = 'MENU';
+        }
+      });
+      navElement.appendChild(menuButton);
       navElement.appendChild(ulElement);
       return navElement;
     }
   }, {
     key: "toggleHidden",
-    value: function toggleHidden(section) {
-      var pageSection = document.querySelector(".".concat(section));
-      console.log(pageSection);
-      pageSection.classList.toggle('hidden');
-      return pageSection;
+    value: function toggleHidden(article) {
+      var articles = document.getElementsByTagName('ARTICLE');
+      console.log(articles.length);
+
+      for (var i = 0; i < articles.length; i++) {
+        if (!articles.item(i).classList.contains('hidden')) {
+          articles.item(i).classList.toggle('hidden');
+        }
+
+        if (articles.item(i).classList.contains("".concat(article))) {
+          articles.item(i).classList.toggle('hidden');
+        }
+      }
+
+      return articles;
     }
   }, {
     key: "getNumRows",
@@ -500,15 +529,142 @@ function () {
 }();
 
 module.exports = Components;
+},{}],"public/js/utils/Themes.js":[function(require,module,exports) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+var Themes =
+/*#__PURE__*/
+function () {
+  function Themes() {
+    _classCallCheck(this, Themes);
+  }
+
+  _createClass(Themes, [{
+    key: "createElement",
+    //Rather than use default createElement, this catch erronious creation of elements
+    value: function createElement(elementType) {
+      if (!elementType) {
+        throw new Error('Must pass valid HTML Element');
+      }
+
+      var createdElement = document.createElement(elementType);
+      return createdElement;
+    } //Store color hrefs
+
+  }, {
+    key: "swapStyle",
+    value: function swapStyle(sheet) {
+      var colors = document.getElementsByClassName('color');
+      console.log(colors);
+
+      for (var i = 0; i < colors.length; i++) {
+        var colorHref = '' + colors.item(i).getAttribute('href');
+        console.log(colorHref);
+        console.log(sheet);
+
+        if (colorHref.indexOf(sheet) > -1) {
+          var styleToInsert = document.createElement('link');
+          styleToInsert.setAttribute('class', 'active-theme');
+          styleToInsert.setAttribute('class', 'active-theme');
+          styleToInsert.setAttribute('id', 'pagestyle');
+          styleToInsert.setAttribute('href', "".concat(colors.item(i).getAttribute('href')));
+          styleToInsert.setAttribute('rel', 'stylesheet');
+          styleToInsert.setAttribute('type', 'text/css');
+          var colorInsert = document.querySelector('.color-insert');
+          colorInsert.innerHTML = '';
+          colorInsert.appendChild(styleToInsert);
+        }
+      } // document.getElementById('colors').setAttribute('href', ``);
+
+
+      return;
+    }
+  }, {
+    key: "themeButtons",
+    value: function themeButtons() {
+      var _this = this;
+
+      var buttonDivs;
+      var clrBtnNames = ['classic', 'blue', 'dark', 'bubblegum'];
+      buttonDivs = clrBtnNames.map(function (clrBtnName) {
+        var btnDiv = document.createElement('div');
+        var clrBtn = document.createElement('button');
+        btnDiv.classList.add('grid-inner');
+        btnDiv.setAttribute('style', "background-color: var(--".concat(clrBtnName, ");"));
+        clrBtn.classList.add('theme-button');
+        clrBtn.textContent = clrBtnName.charAt(0).toUpperCase() + clrBtnName.slice(1);
+        clrBtn.addEventListener('click', function () {
+          _this.swapStyle("".concat(clrBtnName));
+        });
+        btnDiv.appendChild(clrBtn);
+        return btnDiv;
+      });
+      return buttonDivs;
+    }
+  }, {
+    key: "buttonGrid",
+    value: function buttonGrid() {
+      var outerDiv = document.createElement('div');
+      outerDiv.classList.add('grid-outer');
+      var themeBtns = this.themeButtons();
+
+      for (var i = 0; i < themeBtns.length; i++) {
+        var themeBtn = themeBtns[i];
+        outerDiv.appendChild(themeBtn);
+      }
+
+      return outerDiv;
+    }
+  }]);
+
+  return Themes;
+}();
+
+module.exports = Themes;
 },{}],"public/js/app.js":[function(require,module,exports) {
 var Components = require('./utils/Components');
 
+var Themes = require('./utils/Themes');
+
 var components = new Components();
+var themes = new Themes();
 var fixedHeader = document.querySelector('.fixed-header');
 fixedHeader.appendChild(components.createNavBar());
-var mainContainer = document.querySelector('.container');
-mainContainer.appendChild(components.newGridButton());
-},{"./utils/Components":"public/js/utils/Components.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+var themesGrid = document.querySelector('.themes');
+themesGrid.appendChild(themes.buttonGrid());
+var gridCreator = document.querySelector('.gridmaker');
+gridCreator.appendChild(components.newGridButton()); // let navList = document.querySelector('.nav_list')
+// let menuButton = document.querySelector('.nav_button')
+// function changesOnResize(){
+//     let winWidth = window.innerWidth
+//     console.log(winWidth)
+//     if (winWidth > 670) {
+//         if(!navList.classList.contains('visible')){
+//             navList.classList.toggle('visible')
+//         }
+//         if(!menuButton.classList.contains('stayHidden')) {
+//             menuButton.classList.toggle('stayHidden')
+//         }
+//     }
+//     if (winWidth < 670) {
+//         if(navList.classList.contains('visible')){
+//              navList.classList.toggle('visible')
+//         }
+//         if(menuButton.classList.contains('stayHidden')) {
+//                 menuButton.classList.toggle('stayHidden')
+//         }
+//     }
+//         console.log(navList)
+// }
+// window.onresize = changesOnResize
+// window.onload = changesOnResize
+
+window.onload = themes.swapStyle('orange');
+},{"./utils/Components":"public/js/utils/Components.js","./utils/Themes":"public/js/utils/Themes.js"}],"node_modules/parcel/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -536,7 +692,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "62421" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60755" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

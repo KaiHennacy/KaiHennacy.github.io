@@ -1,4 +1,6 @@
 class Components {
+    
+    //Rather than use default createElement, this catch erronious creation of elements
     createElement(elementType) {
         if(!elementType) {
             throw new Error('Must pass valid HTML Element')
@@ -15,7 +17,7 @@ class Components {
         newGridButton.textContent = 'Create Grid'
         
         newGridButton.addEventListener('click', () => {
-            const mainContainer = document.querySelector('.container')
+            const mainContainer = document.querySelector('.gridmaker')
             mainContainer.appendChild(this.createGrid())
         })
         return newGridButton
@@ -228,13 +230,13 @@ class Components {
             contentForm.appendChild(bodyInput)
             contentForm.appendChild(submitPanel)
 
-            newInnerDiv.appendChild(contentForm)
-
+            
             newInnerDiv.appendChild(displayMove)
-
+            
             newInnerDiv.appendChild(moveContainer)
-
-            // newInnerDiv.setAttribute('style', 'grid-area: 1/1/1/1;')
+            
+            newInnerDiv.appendChild(contentForm)
+            
             outerDiv.appendChild(newInnerDiv)
         })
 
@@ -264,21 +266,33 @@ class Components {
     createNavBar() {
         const navElement = this.createElement('nav')
         const ulElement = this.createElement('ul')
-        const buttonElement = this.createElement('button')
+        const menuButton = this.createElement('button')
         let liElements
 
-        const sections = ['home', 'about', 'projects', 'theme']
+        // const homeButton = this.createElement('li')
 
-        liElements = sections.map((section) => {
+        // homeButton.classList.add('nav_list-item')
+
+        // homeButton.addEventListener('click', () => {
+
+        // })
+
+        const articles = ['home', 'about', 'projects', 'themes', 'gridmaker']
+        // I would use const sections = ['foo', 'bar', '...', '...'], but I want to give each tab its own functionality"
+
+        navElement.classList.add('nav')
+
+
+        liElements = articles.map((article) => {
             const liElement = document.createElement('li')
             const btnElement = document.createElement('button')
 
-            btnElement.textContent = section.charAt(0).toUpperCase() + section.slice(1)
+            btnElement.textContent = article.charAt(0).toUpperCase() + article.slice(1)
 
             // aElement.setAttribute('href', `#${section}`)
 
             btnElement.addEventListener('click', () => {
-                this.toggleHidden(section) 
+                this.toggleHidden(article)
             })
 
             liElement.classList.add('nav_list-item')
@@ -294,29 +308,51 @@ class Components {
 
         ulElement.classList.add('nav_list')
         ulElement.classList.add('hidden')
+
         liElements.forEach((element) => {
             ulElement.appendChild(element);
         })
         //ulElement.innerHTML = liElements.join('')
 
-        buttonElement.classList.add('navigation__button')
-        buttonElement.textContent = 'MENU'
+        menuButton.classList.add('nav_button')
+        menuButton.textContent = 'MENU'
 
-        buttonElement.addEventListener('click', () => {
+        menuButton.addEventListener('click', () => {
+            menuButton.textContent = 'MENU'
             ulElement.classList.toggle('hidden')
+            if(!ulElement.classList.contains('hidden')){
+                menuButton.textContent = 'MENU ^'
+            }
         })
 
-        navElement.appendChild(buttonElement)
+
+        
+        window.addEventListener('click', (event) => {
+            console.log(event)
+            if(!event.target.matches('button')&&!ulElement.classList.contains('hidden')){
+                ulElement.classList.toggle('hidden')
+                menuButton.textContent = 'MENU'
+            }
+        })
+
+        navElement.appendChild(menuButton)
         navElement.appendChild(ulElement)
 
         return navElement
     }
 
-    toggleHidden(section){
-        let pageSection = document.querySelector(`.${section}`)
-        console.log(pageSection)
-        pageSection.classList.toggle('hidden')
-        return pageSection
+    toggleHidden(article){
+        let articles = document.getElementsByTagName('ARTICLE')
+        console.log(articles.length)
+        for( var i = 0; i < articles.length; i++){
+            if((!articles.item(i).classList.contains('hidden'))){
+                articles.item(i).classList.toggle('hidden')
+            }
+            if(articles.item(i).classList.contains(`${article}`)){
+                articles.item(i).classList.toggle('hidden')
+            }
+        }
+        return articles
     }
 
     getNumRows(element){

@@ -1,0 +1,132 @@
+@media (min-width: 480px){
+    .fixed-header_title{
+        font-size: 1.79rem;
+    }
+    .page-logo{
+        height: 3rem;
+    }
+    .nav_list-item{
+        font-size: 1.1rem;
+    }
+    .about-me header{
+        font-size: 2.0rem;
+    }
+    .projects header{
+        font-size: 2.0rem;
+    }
+    ul li{
+        font-size: 1.1rem;
+    }
+}
+@media (min-width: 400px){
+    .about-me p{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 620px) {
+    .about-me_sections{
+        display: grid;
+        grid-template-areas:
+        'header header header'
+        'header header header'
+        'bio bio avatar'
+        'skills skills contact';
+        grid-gap: 10px;
+    }
+    .projects_sections{
+        display: grid;
+        grid-template-areas:
+        'header header header'
+        'hospital virtual-pet portfolio';
+        grid-gap: 10px;
+    }
+    img{
+        max-width: 40vw;
+    }
+    .projects_sections img{
+        max-width: 20vw;
+    }
+    .about-me p{
+        font-size: 1rem;
+    }
+    .about-me h3{
+        font-size: 1.5rem;
+    }
+    .projects p{
+        font-size: 1rem;
+    }
+    .projects h3{
+        font-size: 1.5rem;
+    }
+    .projects h4{
+        font-size: 1.4rem;
+    }
+    ul li{
+        font-size: 1rem;
+    }
+}
+@media (min-width: 720px){
+    .fixed-header{
+        flex-direction: row;
+    }
+
+    .nav_button{
+        display: none;
+    }
+
+    .nav_list{
+        position: relative;
+        display: inline;
+        min-width: inherit;
+        background-color: var(--grey);
+    }
+
+    .nav_list-item{
+        display: inherit;
+        background-color: var(--grey);
+    }
+
+    .nav_list-item button{
+        padding: 10px 20px 10px 20px; 
+    }
+}
+@media (min-width: 880px){
+    .about-me p{
+        font-size: 1.5rem;
+    }
+    .about-me h3{
+        font-size: 2rem;
+    }
+    .projects p{
+        font-size: 1.5rem;
+    }
+    .projects h3{
+        font-size: 2rem;
+    }
+    .projects h4{
+        font-size: 1.7rem;
+    }
+    ul li{
+        font-size: 1.5rem;
+    }
+}
+@media (min-width: 1200px){
+    .about-me p{
+        font-size: 2rem;
+    } 
+    .about-me h3{
+        font-size: 2.5rem;
+    }
+    .projects p{
+        font-size: 2rem;
+    }
+    .projects h3{
+        font-size: 2.5rem;
+    }
+    .projects h4{
+        font-size: 1.7rem;
+    }
+    ul li{
+        font-size: 2rem;
+    }
+}
