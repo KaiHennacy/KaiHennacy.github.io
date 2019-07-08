@@ -9,6 +9,10 @@
     "predeploy": "rm -rf dist && parcel build index.html",
     "deploy": "gh-pages -d dist"
   },
+  "devDependencies": {
+    "gh-pages": "^1.2.0",
+    "parcel": "^1.9.7"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/KaiHennacy/KaiHennacy.github.io.git"
