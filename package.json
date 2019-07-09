@@ -6,11 +6,11 @@
   "scripts": {
     "test": "jest --colors --coverage",
     "start": "parcel index.html",
-    "predeploy": "rm -rf dist && parcel build index.html",
+    "predeploy": "rm -rf dist && parcel build index.html"
   },
   "devDependencies": {
     "gh-pages": "^1.2.0",
-    "parcel": "^1.9.7"
+    "parcel": "^1.12.3"
   },
   "repository": {
     "type": "git",
@@ -25,6 +25,6 @@
   "homepage": "https://github.com/KaiHennacy/KaiHennacy.github.io#readme",
   "dependencies": {
     "bundle": "^2.1.0",
-    "parcel": "^1.12.3"
+    "bundler": "^0.8.0"
   }
 }
