@@ -1,30 +1,19 @@
 {
-  "name": "KaiHennacy.github.io",
+  "name": "kaihennacy.github.io",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --colors --coverage",
+    "test": "jest test",
     "start": "parcel index.html",
-    "predeploy": "rm -rf dist && parcel build index.html"
-  },
-  "devDependencies": {
-    "gh-pages": "^1.2.0",
-    "parcel": "^1.12.3"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/KaiHennacy/KaiHennacy.github.io.git"
+    "predeploy": "rm -rf dist && parcel build index.html",
+    "deploy": "gh-pages -d dist"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/KaiHennacy/KaiHennacy.github.io/issues"
-  },
-  "homepage": "https://github.com/KaiHennacy/KaiHennacy.github.io#readme",
   "dependencies": {
-    "bundle": "^2.1.0",
-    "bundler": "^0.8.0"
+    "gh-pages": "^2.0.1",
+    "parcel": "^1.12.3"
   }
 }
